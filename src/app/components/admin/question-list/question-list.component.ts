@@ -9,7 +9,7 @@ import { QuestionService } from '../../../services/question.service';
   styleUrl: './question-list.component.scss'
 })
 export class QuestionListComponent {
-  categories = ['angular', 'csharp', 'sql'];
+  categories = ['angular', 'csharp', 'sql', 'algorithm'];
   selectedCategory: string | null = null;
   questions: any[] = [];
 
@@ -38,6 +38,7 @@ export class QuestionListComponent {
       case 'angular': return 'Angular';
       case 'csharp': return 'C#';
       case 'sql': return 'SQL';
+      case 'algorithm': return 'Algorithm';
       default: return category;
     }
   }
