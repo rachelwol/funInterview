@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "מהו ההבדל בין struct ל-class ב-C#?",
+      "options": [
+        "struct הוא value type ו-class הוא reference type",
+        "אין הבדל משמעותי",
+        "struct תמיד מוקצה על ה-heap",
+        "class לא יכול לרשת מclass אחר"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "question": "מהו delegates ב-C#?",
+      "options": [
+        "סוג של משתנה",
+        "טיפוס המייצג reference למתודה",
+        "מחלקה לניהול זיכרון",
+        "ממשק להורשה מרובה"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "מהו async/await ב-C#?",
+      "options": [
+        "מנגנון לסנכרון threads",
+        "דרך לכתיבת קוד אסינכרוני",
+        "שיטה להרצת קוד במקביל",
+        "טכניקה לניהול exceptions"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+<div class="quiz-container">
+  @if(!selectedCategory){
+  <div class="category-selection">
+    <h2>בחר נושא</h2>
+    <div class="category-buttons">
+      <button class="category-btn angular" (click)="selectCategory('angular')">Angular</button>
+      <button class="category-btn csharp" (click)="selectCategory('csharp')">C#</button>
+      <button class="category-btn sql" (click)="selectCategory('sql')">SQL</button>
+    </div>
+  </div>
+  }
+  @if(selectedCategory && questions.length){
+  <div class="quiz">
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="(currentQuestionIndex / questions.length) * 100"></div>
+    </div>
+
+    <h2>שאלה {{ currentQuestionIndex + 1 }} מתוך {{ questions.length }}</h2>
+
+    <div class="question-card">
+      <h3>{{ currentQuestion.question }}</h3>
+      <div class="options">
+        @for(option of currentQuestion.options; track option.indexOf; let i = $index) {
+        <button class="option-btn" [class.correct]="answerSubmitted && i === currentQuestion.correctAnswer"
+          [class.incorrect]="answerSubmitted && i === selectedAnswer && i !== currentQuestion.correctAnswer"
+          [class.selected]="selectedAnswer === i" [disabled]="answerSubmitted" (click)="selectAnswer(i)"
+          [innerHtml]="option">
+        </button>
+        }
+      </div>
+      @if(answerSubmitted){
+      <div class="feedback">
+        <p [class.correct-text]="isCorrect" [class.incorrect-text]="!isCorrect">
+          {{ isCorrect ? 'כל הכבוד! תשובה נכונה!' : 'טעות!' }}
+        </p>
+        @if(!isCorrect){
+        <p class="correct-answer">
+          התשובה הנכונה היא: {{ currentQuestion.options[currentQuestion.correctAnswer] }}
+        </p>
+        }
+        <button class="next-btn" (click)="nextQuestion()">
+          {{ currentQuestionIndex === questions.length - 1 ? 'סיים משחק' : 'המשך לשאלה הבאה' }}
+        </button>
+      </div>
+      }
+    </div>
+
+    <div class="score-container">
+      <div class="score">
+        ניקוד: {{ score }} / {{ questions.length }}
+      </div>
+    </div>
+  </div>
+  }
+</div>

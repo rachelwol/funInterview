@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "מהו ההבדל בין INNER JOIN ל-LEFT JOIN?",
+      "options": [
+        "אין הבדל משמעותי",
+        "INNER JOIN מחזיר רק התאמות, LEFT JOIN מחזיר את כל השורות מהטבלה השמאלית",
+        "LEFT JOIN מהיר יותר",
+        "INNER JOIN תמיד מחזיר יותר תוצאות"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "מהו ההבדל בין DELETE ל-TRUNCATE?",
+      "options": [
+        "DELETE מוחק שורות ספציפיות, TRUNCATE מוחק את כל הטבלה",
+        "אין הבדל",
+        "TRUNCATE מהיר יותר אבל פחות בטוח",
+        "DELETE לא ניתן לביטול"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "question": "מהו Index בSQL?",
+      "options": [
+        "שיטה לאחסון נתונים",
+        "מבנה נתונים לשיפור ביצועי שאילתות",
+        "סוג של טבלה",
+        "מפתח ראשי"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+}
