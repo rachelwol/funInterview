@@ -7,6 +7,9 @@
       <button class="category-btn csharp" (click)="selectCategory('csharp')">C#</button>
       <button class="category-btn sql" (click)="selectCategory('sql')">SQL</button>
       <button class="category-btn algorithm" (click)="selectCategory('algorithm')">Algorithm</button>
+      <button class="category-btn html" (click)="selectCategory('html')">HTML</button>
+      <button class="category-btn css" (click)="selectCategory('css')">CSS</button>
+      <button class="category-btn javascript" (click)="selectCategory('javascript')">Javascript</button>
     </div>
   </div>
   }
@@ -16,8 +19,14 @@
       <div class="progress" [style.width.%]="(currentQuestionIndex / questions.length) * 100"></div>
     </div>
 
-    <h2>שאלה {{ currentQuestionIndex + 1 }} מתוך {{ questions.length }}</h2>
-
+    <div class="question-header">
+      <h2>שאלה {{ currentQuestionIndex + 1 }} מתוך {{ questions.length }}</h2>
+      <div class="score-container">
+        <div class="score">
+          ניקוד: {{ score }} / {{ questions.length }}
+        </div>
+      </div>
+    </div>
     <div class="question-card">
       <h3>{{ currentQuestion.question }}</h3>
       <div class="options">
@@ -34,11 +43,9 @@
         <p [class.correct-text]="isCorrect" [class.incorrect-text]="!isCorrect">
           {{ isCorrect ? 'כל הכבוד! תשובה נכונה!' : 'טעות!' }}
         </p>
-        @if(!isCorrect){
         <p class="correct-answer">
-          התשובה הנכונה היא: {{ currentQuestion.options[currentQuestion.correctAnswer] }}
+          {{ currentQuestion.explain }}
         </p>
-        }
         <button class="next-btn" (click)="nextQuestion()">
           {{ currentQuestionIndex === questions.length - 1 ? 'סיים משחק' : 'המשך לשאלה הבאה' }}
         </button>
@@ -46,11 +53,6 @@
       }
     </div>
 
-    <div class="score-container">
-      <div class="score">
-        ניקוד: {{ score }} / {{ questions.length }}
-      </div>
-    </div>
   </div>
   }
 </div>

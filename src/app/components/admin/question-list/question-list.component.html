@@ -4,30 +4,33 @@
   <div class="category-filter">
     @for(cat of categories; track cat.indexOf) {
     <button [class.active]="selectedCategory === cat" (click)="selectCategory(cat)">
-      {{getCategoryDisplay(cat)}}
+      {{cat}}
     </button>
     }
   </div>
   @if(selectedCategory){
-  <div class="questions">
-    @for(question of questions; track question.indexOf; let i = $index) {
-    <div class="question-card">
-      <div class="question-header">
-        <span class="question-number">שאלה {{i + 1}}</span>
-      </div>
-      <p class="question-text">{{question.question}}</p>
-      <div class="options">
-        @for(option of question.options; track option.indexOf; let j = $index) {
-        <div [class.correct]="j === question.correctAnswer" class="option">
-          {{option}}
-          @if(j === question.correctAnswer){
-          <span class="correct-badge">✓</span>
+  <div class="questions-container" style="height: 80vh; overflow-y: auto;">
+    <div class="questions">
+      @for(question of questions; track question.indexOf; let i = $index) {
+      <div class="question-card">
+        <div class="question-header">
+          <span class="question-number">שאלה {{i + 1}}</span>
+        </div>
+        <p class="question-text">{{question.question}}</p>
+        <div class="options">
+          @for(option of question.options; track option.indexOf; let j = $index) {
+          <div [class.correct]="j === question.correctAnswer" class="option">
+            {{option}}
+            @if(j === question.correctAnswer){
+            <span class="correct-badge">✓</span>
+            }
+          </div>
           }
         </div>
-        }
+        <p class="explain">הסבר: {{question.explain}}</p>
       </div>
+      }
     </div>
-    }
   </div>
   }
 </div>

@@ -10,26 +10,17 @@ import { Question } from '../models/question.model';
 export class QuestionService {
 
   private questionsCache: { [key: string]: Question[] } = {};
+  SERVER_API_URL = "https://funinterviewserver.onrender.com/api/questions";
+  API_URL = 'http://localhost:3100/api/questions';
 
   constructor(private http: HttpClient) {}
 
   getQuestions(category: string): Observable<QuestionSet> {
-    debugger;
-    const url = '/assets/' + category + '-questions.json';
-    return this.http.get<QuestionSet>(url).pipe(
-      tap(data => {
-        debugger;
-        this.questionsCache[category] = data.questions;
-      })
-    );
+    return this.http.get<QuestionSet>(`${this.SERVER_API_URL}/${category}`);
   }
 
-  addQuestion(category: string, question: Question): Observable<void> {
-    if (!this.questionsCache[category]) {
-      this.questionsCache[category] = [];
-    }
-    this.questionsCache[category].push(question);
-    return of(void 0);
+  addQuestion(category: string, question: Question): Observable<any> {
+    return this.http.post(`${this.SERVER_API_URL}/${category}`, question);
   }
 
   shuffleQuestions(questions: Question[]): Question[] {

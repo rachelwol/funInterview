@@ -8,6 +8,9 @@
         <option value="csharp">C#</option>
         <option value="sql">SQL</option>
         <option value="algorithm">Algorithm</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="javascript">Javascript</option>
       </select>
     </div>
 
@@ -29,6 +32,11 @@
         </div>
       </div>
       }
+    </div>
+
+    <div class="form-group">
+      <label for="explain">הסבר תשובה:</label>
+      <textarea id="explain" [(ngModel)]="newQuestion.explain" name="explain" rows="3"></textarea>
     </div>
 
     <div class="button-container">

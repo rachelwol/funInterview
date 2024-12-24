@@ -9,7 +9,7 @@ import { QuestionService } from '../../../services/question.service';
   styleUrl: './question-list.component.scss'
 })
 export class QuestionListComponent {
-  categories = ['angular', 'csharp', 'sql', 'algorithm'];
+  categories = ['angular', 'csharp', 'sql', 'algorithm', 'html', 'css', 'javascript'];
   selectedCategory: string | null = null;
   questions: any[] = [];
 
@@ -30,16 +30,6 @@ export class QuestionListComponent {
         .subscribe((data: any) => {
           this.questions = data.questions;
         });
-    }
-  }
-
-  getCategoryDisplay(category: string): string {
-    switch (category) {
-      case 'angular': return 'Angular';
-      case 'csharp': return 'C#';
-      case 'sql': return 'SQL';
-      case 'algorithm': return 'Algorithm';
-      default: return category;
     }
   }
 }

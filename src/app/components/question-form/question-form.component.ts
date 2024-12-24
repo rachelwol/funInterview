@@ -14,7 +14,8 @@ export class QuestionFormComponent {
     category: 'angular',
     question: '',
     options: ['', '', '', ''],
-    correctAnswer: 0
+    correctAnswer: 0,
+    explain: ''
   };
 
   showSuccess = false;
@@ -27,7 +28,8 @@ export class QuestionFormComponent {
       {
         question: this.newQuestion.question,
         options: [...this.newQuestion.options],
-        correctAnswer: this.newQuestion.correctAnswer
+        correctAnswer: this.newQuestion.correctAnswer,
+        explain: this.newQuestion.explain
       }
     ).subscribe(() => {
       this.showSuccess = true;
@@ -40,7 +42,8 @@ export class QuestionFormComponent {
         category: 'angular',
         question: '',
         options: ['', '', '', ''],
-        correctAnswer: 0
+        correctAnswer: 0,
+        explain: ''
       };
     });
   }

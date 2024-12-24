@@ -18,13 +18,11 @@ export class QuizComponent {
   answerSubmitted = false;
   score = 0;
   isCorrect = false;
+  currentQuestion: Question = { question: '', options: [], correctAnswer: 0, explain: '' };
 
   constructor(private questionService: QuestionService) { }
 
-  ngOnInit() { }
-
-  get currentQuestion(): Question {
-    return this.questions[this.currentQuestionIndex];
+  ngOnInit() {
   }
 
   selectCategory(category: string) {
@@ -34,12 +32,8 @@ export class QuizComponent {
 
   loadQuestions() {
     if (this.selectedCategory) {
-      this.questionService
-        .getQuestions(this.selectedCategory)
-        .subscribe((data) => {
-          this.questions = this.questionService.shuffleQuestions(
-            data.questions
-          );
+      this.questionService.getQuestions(this.selectedCategory).subscribe((data) => {
+          this.questions = this.questionService.shuffleQuestions(data.questions);
           this.resetQuiz();
         });
     }
@@ -47,7 +41,7 @@ export class QuizComponent {
 
   selectAnswer(index: number) {
     this.selectedAnswer = index;
-    this.submitAnswer(); // Automatically submit when an answer is selected
+    this.submitAnswer();
   }
 
   submitAnswer() {
@@ -66,6 +60,7 @@ export class QuizComponent {
       this.currentQuestionIndex++;
       this.selectedAnswer = null;
       this.answerSubmitted = false;
+      this.currentQuestion = this.questions[this.currentQuestionIndex];
     } else {
       this.selectedCategory = null;
       this.resetQuiz();
@@ -77,5 +72,6 @@ export class QuizComponent {
     this.selectedAnswer = null;
     this.answerSubmitted = false;
     this.score = 0;
+    this.currentQuestion = this.questions[this.currentQuestionIndex];
   }
 }
