@@ -9,7 +9,7 @@ import { QuestionService } from '../../../services/question.service';
   styleUrl: './question-list.component.scss'
 })
 export class QuestionListComponent {
-  categories = ['angular', 'csharp', 'sql', 'algorithm', 'html', 'css', 'javascript'];
+  categories = ['angular', 'csharp', 'sql', 'algorithm', 'html', 'css', 'javascript', 'nodejs'];
   selectedCategory: string | null = null;
   questions: any[] = [];
 
